@@ -4,7 +4,7 @@ const { expect } = require('chai');
 describe('Dog model', () => {
   before(() => conn.authenticate()
     .catch((err) => {
-      console.error('Unable to connect to the database:', err);
+      console.error('No se conecto a la base de datos:', err);
     }));
   describe('Validators', () => {
     beforeEach(() => Dog.sync({ force: true }));
@@ -15,7 +15,8 @@ describe('Dog model', () => {
           .catch(() => done());
       });
       it('should work when its a valid name', () => {
-        Dog.create({ name: 'Pug' });
+        Dog.create({ name: 'Pug', description: 'Canino malo'})
+          .catch((err)=> (console.error('No existen algunas varables', err)))
       });
     });
   });
