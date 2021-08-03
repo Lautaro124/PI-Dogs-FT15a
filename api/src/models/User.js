@@ -16,9 +16,5 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
     },
-    favorites: {
-        type: DataTypes.STRING,
-        allowNull: true,
-    }
   });
 };

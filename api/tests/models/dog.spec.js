@@ -8,7 +8,7 @@ describe('Dog model', () => {
     }));
   describe('Validators', () => {
     beforeEach(() => Dog.sync({ force: true }));
-    describe('name', () => {
+    describe('Data', () => {
       it('should throw an error if name is null', (done) => {
         Dog.create({})
           .then(() => done(new Error('It requires a valid name')))

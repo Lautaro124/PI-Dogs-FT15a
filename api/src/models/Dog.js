@@ -13,16 +13,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    race: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     age: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    owner: {
-      type: DataTypes.STRING,
       allowNull: true,
     },
     size: {
