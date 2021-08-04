@@ -1,23 +1,18 @@
 const { Router } = require('express');
 const { Dog, Temperament } = require('../db')
 const router = Router();
+const { list, namesFilter }  = require('./tryApi')
 
-router.post('/', (req, res) => {
-    
-    Dog.create({
-        id: req.body.id,
-        name: req.body.name,
-        height: req.body.height,
-        weight: req.body.weight,
-        life_span: req.body.life_span,
-    })
-
-    return res.status(200).json(req.body)
+router.get('/', async(req, res) => {
+    let lista = await list()
+    return res.status(200).send(lista)
 })
 
-router.get('/dogs', (req, res) => {
-    let aux = []
+router.get('/?name=:name', async(req, res) => {
+    let lista2 = await namesFilter(req.params.name)
 
-
+    return res.status(200).send(lista2)
 })
+
+
 module.exports = router;
