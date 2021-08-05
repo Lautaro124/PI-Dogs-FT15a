@@ -16,15 +16,15 @@ module.exports = {
     },
     namesFilter: async (parameter) =>{
 
-        const apiCall = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apikey}`)
-        console.log(apiCall.data)
-        let dogListApi = await apiCall.data.filter((objeto) =>
-            objeto.name.toLowerCase().includes(parameter.toLowerCase())
-        );
-        
+        const apiCall = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${parameter}?api_key=${apikey}`)
 
-        let dogListDB = await Dog.findAll(e => e.name.toLowerCase().includes(parameter.toLowerCase()))   
-        
+        let dogListApi = await apiCall.data
+        let dogListDB = await Dog.findAll()   
+
+        dogListDB = dogListDB.filter((objeto) =>
+        objeto.name.toLowerCase().includes(parameter.toLowerCase())
+        );
+
         let dogList = [...dogListApi, ...dogListDB]
         return dogList
     }

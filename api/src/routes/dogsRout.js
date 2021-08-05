@@ -4,15 +4,22 @@ const router = Router();
 const { list, namesFilter }  = require('./tryApi')
 
 router.get('/', async(req, res) => {
+    const {name} = req.query  
+    
+    if(name){
+        let lista2 = await namesFilter(name)
+
+        return res.status(200).send(lista2)
+    }
+       
     let lista = await list()
+    
     return res.status(200).send(lista)
 })
 
-router.get('/?name=:name', async(req, res) => {
-    let lista2 = await namesFilter(req.params.name)
 
-    return res.status(200).send(lista2)
-})
+    
+
 
 
 module.exports = router;
