@@ -1,25 +1,47 @@
 const { Router } = require('express');
 const { Dog, Temperament } = require('../db')
 const router = Router();
-const { list, namesFilter }  = require('./tryApi')
+const { list, namesFilter, shearchId }  = require('./tryApi')
 
 router.get('/', async(req, res) => {
-    const {name} = req.query  
+    try{
+            const {name} = req.query  
     
-    if(name){
-        let lista2 = await namesFilter(name)
+        if(name){
+            let lista2 = await namesFilter(name)
 
-        return res.status(200).send(lista2)
+            if(lista2.length < 1){
+                return res.status(400).send("No existe")
+            }
+            return res.status(200).send(lista2)
+        }
+        
+        let lista = await list()
+        
+        return res.status(200).send(lista)
     }
-       
-    let lista = await list()
-    
-    return res.status(200).send(lista)
+    catch {
+        return res.status(401).send("Error")
+    }
+
 })
 
+router.get('/:idRaza', async (req, res) => {
 
-    
+    try{
+        const {idRaza} = req.params
 
+        let lista = await shearchId(idRaza)
 
+        if(lista === {}){
+            return res.status(404).send("No existe")
+        }
+        return res.status(200).send(lista) 
+    }
+    catch{
+        return res.status(401).send("Error")
+    }
+
+})
 
 module.exports = router;
