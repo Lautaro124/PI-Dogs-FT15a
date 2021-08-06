@@ -4,7 +4,8 @@ const { Router } = require('express');
 const dogs = require('./dogsRout')
 const temp = require('./temperamnt')
 const algo = require('./post')
-const express = require('express');
+
+const express = require('express')
 
 const router = Router();
 router.use(express.json());

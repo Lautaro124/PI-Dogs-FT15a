@@ -27,6 +27,7 @@ module.exports = {
         );
 
         let dogList = [...dogListApi, ...dogListDB]
+        
         return dogList
     },
     shearchId: async (parameter) => {
@@ -48,7 +49,7 @@ module.exports = {
             }
         });
 
-        let dogListDB = await Dog.findAll()   
+        let dogListDB = await Dog.findAll({include: Temperament})   
         dogListDB = dogListDB.forEach((objeto) =>{
             if(objeto.id.toString() === parameter){
                 arr = {

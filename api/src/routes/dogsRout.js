@@ -5,7 +5,7 @@ const { list, namesFilter, shearchId }  = require('./tryApi')
 
 router.get('/', async(req, res) => {
     try{
-            const {name} = req.query  
+        const {name} = req.query  
     
         if(name){
             let lista2 = await namesFilter(name)
@@ -33,6 +33,7 @@ router.get('/:idRaza', async (req, res) => {
 
         let lista = await shearchId(idRaza)
 
+        
         if(lista === {}){
             return res.status(404).send("No existe")
         }
