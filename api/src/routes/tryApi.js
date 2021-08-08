@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { apikey } = process.env
-const { Dog }= require('../db')
+const { Dog, Temperament}= require('../db')
 
 
 module.exports = {
