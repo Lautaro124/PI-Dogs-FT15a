@@ -2,21 +2,22 @@ const axios = require('axios');
 const { apikey } = process.env
 const { Dog, Temperament}= require('../db')
 
-
-module.exports = {
-    list: async () => {
+const list= async () => {
 
         let apiCall = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apikey}`)
         let dogListApi = apiCall.data.map(e =>{
-            return { name: e.name }
-        })
 
-        let dogListDB = await Dog.findAll()
+        let arr = e.temperament && e.temperament.split(',').map(e => e.trim())
+         
+        return { name: e.name,  temperament: arr }
+       })
+
+       let dogListDB = await Dog.findAll()
         let dogList = [...dogListApi, ...dogListDB]
 
         return dogList
-    },
-    namesFilter: async (parameter) =>{
+    }
+const namesFilter= async (parameter) =>{
 
         let apiCall = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${parameter}`)
         let dogListApi = await apiCall.data
@@ -29,8 +30,8 @@ module.exports = {
         let dogList = [...dogListApi, ...dogListDB]
         
         return dogList
-    },
-    shearchId: async (parameter) => {
+    }
+const  shearchId= async (parameter) => {
 
         let arr = {}
 
@@ -44,7 +45,7 @@ module.exports = {
                     height: objeto.height,
                     weight: objeto.weight,
                     life_span: objeto.life_span,
-                    temperaments: objeto.temperaments,
+                    temperament: objeto.temperament,
                 }
             }
         });
@@ -58,19 +59,36 @@ module.exports = {
                     height: objeto.height,
                     weight: objeto.weight,
                     life_span: objeto.life_span,
-                    temperaments: objeto.temperaments,
+                    temperament: Temperamen.data.map(e => {
+
+                    }),
                 }
             }
         });
 
         return arr
-    },
-    temperaments: async() => {
-
-        let apiList = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apikey}`)     
-        let objeto = await apiList.data.map(e => e.temperament)
-        
-        let tem = objeto.map(e => e && e.split(', '))
-        return tem
     }
+const  temperaments= async() => {
+
+        let lista = await list()
+
+        let arr = []
+        lista.map(e => {
+            if(e.temperament){
+                arr = [...e.temperament, ...arr];
+            }         
+        })
+
+        let ars = [...new Set(arr)].sort()
+        return ars
+    }
+const setTemperament = async() => {
+    let list = await temperaments()
+    
+    let save = list.map((e) => { 
+        if(e){    
+            Temperament.create({name: e})  
+        }    
+    })
 }
+module.exports = { list,shearchId,namesFilter, setTemperament }

@@ -23,7 +23,6 @@ router.get('/', async(req, res) => {
     catch {
         return res.status(401).send("Error")
     }
-
 })
 
 router.get('/:idRaza', async (req, res) => {
