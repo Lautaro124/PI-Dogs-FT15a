@@ -10,6 +10,7 @@ router.post('/', async(req, res)=> {
 
         let finall = await Temperament.findAll()
         save.setTemperaments(temperament.map(e => { 
+            
             let algo = finall.map(a=> {
                 if(a.name === e){
                     return a.id

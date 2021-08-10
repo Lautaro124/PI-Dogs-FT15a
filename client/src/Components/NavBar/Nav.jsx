@@ -1,12 +1,14 @@
 import React from "react"
-import { NavLink } from 'react-router-dom';
-import SearchBar from '../NavBar/SearchBar'
+// import { NavLink } from 'react-router-dom'
+// import SearchBar from '../SearchBar/SearchBar'
+
 export default function Nav() {
-    return (
+    return(
         <div>
-            <NavLink>Home</NavLink>
+            <h2>Hola nav</h2>
+            {/* <NavLink>Home</NavLink>
             <NavLink>Add</NavLink>
-            <SearchBar/>
+            <SearchBar/> */}
         </div>
     )
 }

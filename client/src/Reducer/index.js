@@ -1,4 +1,4 @@
-import { GET_DOGS, GET_ID_DOGS, GET_TEMPERAMENT, GET_NAME_DOGS, SEND_DOGS } from './constantes'
+import { GET_DOGS, GET_ID_DOGS, GET_TEMPERAMENT, GET_NAME_DOGS, SEND_DOGS } from '../Actions/constantes'
 
 const initialState = {
     dogsLoaded: [],

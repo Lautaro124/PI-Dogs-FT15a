@@ -3,7 +3,7 @@ import Cards from '../Cards/Cards'
 import Nav from '../NavBar/Nav'
 
 
-export default function home() {
+export default function Home() {
     return(
         <div>
             <Nav/>

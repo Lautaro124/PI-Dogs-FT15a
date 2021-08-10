@@ -81,7 +81,7 @@ const  temperaments= async() => {
 
         let ars = [...new Set(arr)].sort()
         return ars
-    }
+}
 const setTemperament = async() => {
     let list = await temperaments()
     
