@@ -7,7 +7,7 @@ export function getDogs(){
     return function(dispatch) {
 
         let algo=  await axios.get(URL_DOGS)
-        dispatch({type: GET_DOGS, payload: dogs})
+        dispatch({type: GET_DOGS, payload: algo})
     }
 }
 
@@ -16,7 +16,7 @@ export function getIdDogs(id){
     return async function(dispatch) {
 
         let algo=  await axios.get(`https://localhost:3001/dogs/${id}`)
-        dispatch({type: GET_ID_DOGS, payload: dogs})
+        dispatch({type: GET_ID_DOGS, payload: algo})
     }
 }
 
@@ -25,7 +25,7 @@ export function getNameDogs(name){
     return async function(dispatch) {
 
         let algo =  await axios.get(`https://localhost:3001/dogs?name=${name}`)
-        dispatch({type: GET_NAME_DOGS, payload: dogs})
+        dispatch({type: GET_NAME_DOGS, payload: algo})
     }
 }
 
@@ -34,7 +34,7 @@ export function getTemperament(){
     return async function(dispatch) {
 
         let algo=  await axios.get(URL_TEMPERAMENT)
-        dispatch({type: GET_TEMPERAMENT, payload: dogs})
+        dispatch({type: GET_TEMPERAMENT, payload: algo})
     }
 }
 
@@ -43,6 +43,6 @@ export function sendDogs(){
     return async function(dispatch) {
 
         let algo=  await axios.get(URL_DOG)
-        dispatch({type:SEND_DOGS, payload: dogs})
+        dispatch({type:SEND_DOGS, payload: algo})
     }
 }

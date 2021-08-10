@@ -9,8 +9,7 @@ router.post('/', async(req, res)=> {
         let save = await Dog.findOrCreate({where: { name }, defaults: { name, height, weight, life_span }})
 
         let finall = await Temperament.findAll()
-        save.setTemperaments(temperament.map(e => {
-            
+        save.setTemperaments(temperament.map(e => { 
             let algo = finall.map(a=> {
                 if(a.name === e){
                     return a.id
