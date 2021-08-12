@@ -7,11 +7,10 @@ import { Route } from 'react-router-dom'
 function App() {
   return (
     <div className="App">
-      {/* <Nav>
-        <Route path= "/dogs" />
-        <Route path= "/dog"/>
-        <Route path= "/temperament"/>
-      </Nav> */}
+       <Nav>
+        <Route path= "/" />
+        <Route path='/details'/>
+      </Nav>
       <Home/>
     </div>
   )

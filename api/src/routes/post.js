@@ -13,13 +13,13 @@ router.post('/', async(req, res)=> {
             
             let algo = finall.map(a=> {
                 if(a.name === e){
-                    return a.id
+                   return a.id
                 }
             })
             return algo
         }))
 
-        return res.status(200).send({ name, height,  weight, life_span})
+        return res.status(200).send({ name, height,  weight, life_span, temperament})
     }
     catch(err) {
 
