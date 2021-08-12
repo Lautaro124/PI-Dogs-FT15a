@@ -6,9 +6,9 @@ const list= async () => {
 
     let apiCall = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apikey}`)
     let dogListApi = apiCall.data.map(e =>{
-    
+        
         let arr = e.temperament && e.temperament.split(',').map(e => e.trim())
-        return { name: e.name,  temperament: arr , image: e.image.url}
+        return { name: e.name,  temperament: arr , image: e.image.url, id: e.id}
     })
     
     let dogListDB = await Dog.findAll()

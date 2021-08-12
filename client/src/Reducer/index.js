@@ -18,8 +18,7 @@ export default function reducer(state= initialState, action) {
             };
 
         case GET_ID_DOGS:
-            return {
-                ...state,
+            return { 
                 dogDetails: action.payload
             };
         

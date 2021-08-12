@@ -1,13 +1,12 @@
-import React from 'react'
-import Cards from '../Cards/Cards'
-import Nav from '../NavBar/Nav'
-
+import React from "react";
+import Cards from "../Cards/Cards";
+import Nav from "../NavBar/Nav";
 
 export default function Home() {
-    return(
-        <div>
-            <Nav/>
-            <Cards/>
-        </div>
-    )
+  return (
+    <div>
+      <Nav />
+      <Cards />
+    </div>
+  );
 }

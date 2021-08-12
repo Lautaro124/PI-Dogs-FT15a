@@ -1,17 +1,16 @@
 import './App.css';
 import React from 'react';
-import Nav from './Components/NavBar/Nav.jsx'
-import Home from './Components/Home/Home.jsx'
+import LandingPage from './Components/LandingPage/LandingPage';
 import { Route } from 'react-router-dom'
+import Home from './Components/Home/Home.jsx'
+import Details from './Components/Details/Details.jsx'
 
 function App() {
   return (
     <div className="App">
-       <Nav>
-        <Route path= "/" />
-        <Route path='/details'/>
-      </Nav>
-      <Home/>
+      <Route exact path= "/" component={LandingPage}></Route>
+      <Route path= "/Home" component={Home}></Route>
+      <Route path= "/Details/:id" component={Details}></Route>
     </div>
   )
 }
