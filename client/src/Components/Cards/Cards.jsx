@@ -3,6 +3,7 @@ import Card from "./Card";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDogs } from "../../Actions/index";
+import S from './card.module.css';
 
 export default function Cards() {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export default function Cards() {
   }, [dispatch]);
   
   return (
-    <div>
+    <div className={S.conten}>
       {dogis &&
         dogis.map((e) => {
           return ( 
