@@ -39,14 +39,16 @@ const  shearchId= async (parameter) => {
     let apiCall = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apikey}`)
     let dogListApi = await apiCall.data
     dogListApi = dogListApi.forEach((objeto) =>{
-        if(objeto.id.toString() === parameter){      
+        if(objeto.id.toString() === parameter){ 
+            let save = objeto.temperament && objeto.temperament.split(',').map(e => e.trim())     
             arr = {
                 name: objeto.name,
                 id: objeto.id,
-                height: objeto.height,
-                weight: objeto.weight,
+                height: objeto.height.metric,
+                weight: objeto.weight.metric,
                 life_span: objeto.life_span,
-                temperament: objeto.temperament,
+                temperament: save,
+                image: objeto.image.url
             }
         }
     });

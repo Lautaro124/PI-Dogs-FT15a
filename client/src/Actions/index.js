@@ -1,5 +1,5 @@
 import { GET_DOGS, GET_ID_DOGS, GET_TEMPERAMENT, GET_NAME_DOGS, SEND_DOGS } from './constantes'
-import { URL_DOGS, URL_DOG, URL_TEMPERAMENT } from '../Constantes'
+import { URL_DOG, URL_TEMPERAMENT } from '../Constantes'
 import axios from 'axios'
 
 export function getDogs(){
@@ -15,7 +15,7 @@ export  function getIdDogs(id){
 
     return async function(dispatch) {
 
-        let algo=  await axios.get(`https://localhost:3001/dogs/${id}`)
+        let algo=  await axios.get(`http://localhost:3001/dogs/${id}`)
         return dispatch({type: GET_ID_DOGS, payload: algo.data})
     }
 }
@@ -24,7 +24,7 @@ export function getNameDogs(name){
 
     return async function(dispatch) {
 
-        let algo =  await axios.get(`https://localhost:3001/dogs?name=${name}`)
+        let algo =  await axios.get(`http://localhost:3001/dogs?name=${name}`)
         return dispatch({type: GET_NAME_DOGS, payload: algo.data})
     }
 }

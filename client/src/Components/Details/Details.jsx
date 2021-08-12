@@ -6,26 +6,26 @@ import { useParams } from "react-router";
 
 export default function Details() {
   const dispatch = useDispatch();
-  const detail = useSelector(state => state.dogDetails)
+  const detail = useSelector((state) => state.dogDetails);
 
   let { id } = useParams();
 
   useEffect(() => {
     dispatch(getIdDogs(id));
   }, [id]);
-
+  
   return (
     <div>
+      <img src={detail.image} />
       <h1>{detail.name}</h1>
       <h4>{detail.height} M</h4>
       <h4>{detail.weight} M</h4>
       <h4>{detail.life_span}</h4>
-      <h4>
-        {detail.temperament &&
-          detail.temperament.map((e) => {
-            return e + ", ";
-          })}
-      </h4>
+      <h4>{detail.temperament && detail.temperament.map(e => {
+          if(e){
+              return e+ " "
+          }
+      })}</h4>
     </div>
   );
 }
