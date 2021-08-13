@@ -1,12 +1,41 @@
 import React from "react";
+import { getNameDogs } from "../../Actions/index";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
-export default function search() {
+export default function Search() {
+  const dispatch = useDispatch();
+  const [input, setInput] = useState("");
+
+  function HandleChange(e) {
+    console.log(e.target.value);
+
+    setInput(e.target.value);
+  }
+
+  function HandleSubmit() {
+    dispatch(getNameDogs(input));
+
+    setInput("");  
+  }
   return (
     <div>
-      <form className="search">
-        <input type="text" className="form-control" placeholde="Search..." />
-        <input type="submit" className="submit">Search</input>
-      </form>
+        <input
+          type="text"
+          placeholder="Search..."
+          onChange={(e) => HandleChange(e)}
+        />
+
+        {input !== "" ? (
+          <Link to="/Home/Search">
+            <button type="submit" onClick={() => HandleSubmit()}>Search</button>
+          </Link>
+        ) : (
+          <Link to="/Home">
+            <button type="submit" onClick={() => HandleSubmit()}>Search</button>
+          </Link>
+        )}
     </div>
   );
 }

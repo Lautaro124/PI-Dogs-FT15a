@@ -3,6 +3,7 @@ import { GET_DOGS, GET_ID_DOGS, GET_TEMPERAMENT, GET_NAME_DOGS, SEND_DOGS } from
 const initialState = {
     dogsLoaded: [],
     dogDetails: {},
+    dogsFilter: [],
     temperaments: [], 
     sendDogs: {}
 }
@@ -31,7 +32,7 @@ export default function reducer(state= initialState, action) {
         case GET_NAME_DOGS:
             return {
                 ...state,
-                dogsLoaded: action.payload
+                dogsFilter: action.payload
             };
 
         case SEND_DOGS:

@@ -24,7 +24,7 @@ const namesFilter= async (parameter) =>{
 
     let dogListDB = await Dog.findAll()   
     dogListDB = dogListDB.filter((objeto) =>
-    objeto.name.toLowerCase().includes(parameter.toLowerCase())
+        objeto.name.toLowerCase().includes(parameter.toLowerCase())
     );
 
     let dogList = [...dogListApi, ...dogListDB]

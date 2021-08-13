@@ -10,6 +10,7 @@ export default function Card(props) {
         <div className="card-body">
           <img src={props.image}  className="card-img-top"/>
         </div>
+        
         <h4 className="card-title">{props.name}</h4>
         <p className="card-subtitle mb-2 text-muted">
           {props.temperament &&
