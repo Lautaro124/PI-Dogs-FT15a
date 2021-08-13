@@ -9,14 +9,13 @@ export default function Search() {
   const [input, setInput] = useState("");
 
   function HandleChange(e) {
-    console.log(e.target.value);
 
     setInput(e.target.value);
   }
 
   function HandleSubmit() {
-    dispatch(getNameDogs(input));
 
+    dispatch(getNameDogs(input));
     setInput("");  
   }
   return (

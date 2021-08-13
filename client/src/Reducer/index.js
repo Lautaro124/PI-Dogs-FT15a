@@ -40,7 +40,7 @@ export default function reducer(state= initialState, action) {
                 ...state,
                 sendDogs: action.payload
             };
-
+        
         default: 
             return state;
     }
