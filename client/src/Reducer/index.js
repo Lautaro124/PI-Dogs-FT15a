@@ -1,4 +1,4 @@
-import { GET_DOGS, GET_ID_DOGS, GET_TEMPERAMENT, GET_NAME_DOGS, SEND_DOGS } from '../Actions/constantes'
+import { GET_DOGS, GET_ID_DOGS, GET_TEMPERAMENT, GET_NAME_DOGS, SEND_DOGS, FILTER_ZA, FILTER_AZ } from '../Actions/constantes'
 
 const initialState = {
     dogsLoaded: [],
@@ -41,6 +41,11 @@ export default function reducer(state= initialState, action) {
                 sendDogs: action.payload
             };
         
+        case FILTER_ZA:
+            return {
+                
+                dogsFilter: action.payload.reverse()
+            };
         default: 
             return state;
     }

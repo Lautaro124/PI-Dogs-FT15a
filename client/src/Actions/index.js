@@ -1,4 +1,4 @@
-import { GET_DOGS, GET_ID_DOGS, GET_TEMPERAMENT, GET_NAME_DOGS, SEND_DOGS } from './constantes'
+import { GET_DOGS, GET_ID_DOGS, GET_TEMPERAMENT, GET_NAME_DOGS, SEND_DOGS, FILTER_ZA,FILTER_AZ } from './constantes'
 import { URL_DOG, URL_TEMPERAMENT } from '../Constantes'
 import axios from 'axios'
 
@@ -44,5 +44,11 @@ export function sendDogs(){
 
         let algo=  await axios.get(URL_DOG)
         return dispatch({type:SEND_DOGS, payload: algo.data})
+    }
+}
+
+export function filterZA(ar){
+    return async function(dispatch){
+        return dispatch({type:FILTER_ZA, payload: ar})
     }
 }
