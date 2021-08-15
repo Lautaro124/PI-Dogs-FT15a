@@ -5,7 +5,7 @@ import Nav from "../NavBar/Nav";
 import S from "../Cards/card.module.css";
 
 export default function ListFilter() {
-  const aut = useSelector((state) => state.dogsFilter);
+  const aut = useSelector((state) => state.dogsLoaded);
 
   return (
     <div>

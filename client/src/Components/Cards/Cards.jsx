@@ -9,12 +9,13 @@ import Paginate from "./Paginate";
 export default function Cards() {
   const dispatch = useDispatch();
   const dogis = useSelector((state) => state.dogsLoaded);
+
   const [page, setPage] = useState(1);
-  const [breads, setBreads] = useState(9);
+  const [breads] = useState(9);
+  console.log(dogis)
 
-  const indexLast = page * breads;
-  const firstIndex = indexLast - breads;
-
+  let indexLast = page * breads;
+  let firstIndex = indexLast - breads;
   const currentBreads = dogis.slice(firstIndex, indexLast);
 
   function pagenate(pageNumber) {

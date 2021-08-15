@@ -6,9 +6,15 @@ const list= async () => {
 
     let apiCall = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apikey}`)
     let dogListApi = apiCall.data.map(e =>{
-        
         let arr = e.temperament && e.temperament.split(',').map(e => e.trim())
-        return { name: e.name,  temperament: arr , image: e.image.url, id: e.id}
+        
+        let convertW = e.weight.metric.split(' ')
+        let resultW = parseInt(convertW[0]) + parseInt(convertW[2]) / 2
+
+        let convertH = e.height.metric.split(' ')
+        let resultH = parseInt(convertH[0]) + parseInt(convertH[2]) / 2
+
+        return { name: e.name,  temperament: arr , image: e.image.url, id: e.id ,weight: resultW, height: resultH}
     })
     
     let dogListDB = await Dog.findAll()
