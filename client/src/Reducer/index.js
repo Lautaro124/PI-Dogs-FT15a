@@ -83,7 +83,7 @@ export default function reducer(state= initialState, action) {
             
             return {
                 ...state,
-                dogsLoaded: state.dogsLoaded.filter(e => e.temperament.some(action.payload))
+                dogsLoaded: state.dogsLoaded.filter(e => e.temperament?.includes(action.payload))
             }
 
         default: 

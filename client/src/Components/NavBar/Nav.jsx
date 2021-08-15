@@ -11,11 +11,12 @@ export default function Nav() {
   const dispatch = useDispatch();
   const [order, setOrder] = useState('')
   const [filter,setFilter] = useState('default')
-  const temps = useSelector((state) => state.temperaments);
 
+  const temps = useSelector((state) => state.temperaments);
   useEffect(() => {
     if(filter === 'default'){
       dispatch(getTemperament())
+      dispatch(getDogs())
     }else{
       dispatch(filterTemp(filter))
     }

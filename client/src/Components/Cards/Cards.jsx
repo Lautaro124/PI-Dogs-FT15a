@@ -12,12 +12,11 @@ export default function Cards() {
 
   const [page, setPage] = useState(1);
   const [breads] = useState(9);
-  console.log(dogis)
 
   let indexLast = page * breads;
   let firstIndex = indexLast - breads;
   const currentBreads = dogis.slice(firstIndex, indexLast);
-
+  
   function pagenate(pageNumber) {
     setPage(pageNumber);
   }
