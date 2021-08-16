@@ -1,14 +1,14 @@
 import { GET_DOGS, GET_ID_DOGS, GET_TEMPERAMENT, GET_NAME_DOGS, 
          SEND_DOGS, FILTER_ZA, FILTER_AZ, ORDER_HEIGHT_MAX, ORDER_HEIGHT_MIN, 
          ORDER_WEIGHT_MAX, ORDER_WEIGHT_MIN, FILTER_TEMP } from '../Actions/constantes'
-
+import axios from 'axios'
 import { orderAZ, height, weight } from '../Components/ListOrder/ListOrder.jsx'
 
 const initialState = {
     dogsLoaded: [],
     dogDetails: {},
-    temperaments: [], 
-    sendDogs: {}
+    temperaments: [],
+    copyBread: []
 }
 
 export default function reducer(state= initialState, action) {
@@ -18,7 +18,8 @@ export default function reducer(state= initialState, action) {
         case GET_DOGS: 
             return {
                 ...state,
-                dogsLoaded: action.payload
+                dogsLoaded: action.payload,
+                copyBread: action.payload
             };
 
         case GET_ID_DOGS:
@@ -38,12 +39,6 @@ export default function reducer(state= initialState, action) {
                 dogsLoaded: action.payload
             };
 
-        case SEND_DOGS:
-            return {
-                ...state,
-                sendDogs: action.payload
-            };
-        
         case FILTER_ZA:
             return {
                 ...state,
@@ -80,10 +75,9 @@ export default function reducer(state= initialState, action) {
             }
 
         case FILTER_TEMP:
-            
             return {
                 ...state,
-                dogsLoaded: state.dogsLoaded.filter(e => e.temperament?.includes(action.payload))
+                dogsLoaded: state.copyBread.filter(e => e.temperament?.includes(action.payload))
             }
 
         default: 

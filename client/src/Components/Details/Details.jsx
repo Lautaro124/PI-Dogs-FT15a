@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIdDogs } from "../../Actions/index";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import S from "./detail.module.css";
 
 export default function Details() {
   const dispatch = useDispatch();
@@ -13,19 +15,25 @@ export default function Details() {
   useEffect(() => {
     dispatch(getIdDogs(id));
   }, [id]);
-  
+
   return (
-    <div>
-      <img src={detail.image} />
-      <h1>{detail.name}</h1>
-      <h4>{detail.height} M</h4>
-      <h4>{detail.weight} M</h4>
-      <h4>{detail.life_span}</h4>
-      <h4>{detail.temperament && detail.temperament.map(e => {
-          if(e){
-              return e+ " "
-          }
-      })}</h4>
+    <div className={S.flexs}>
+      <Link to='/Home'>Home</Link>
+      <div className={S.content}>
+        <img src={detail.image} className={S.img} />
+        <h1>{detail.name}</h1>
+        <h4>Height: {detail.height} M</h4>
+        <h4>Weight: {detail.weight} M</h4>
+        <h4>Life span: {detail.life_span}</h4>
+        <h4>Temperaments: 
+          {detail.temperament &&
+            detail.temperament.map((e) => {
+              if (e) {
+                return " " + e  ;
+              }
+            })}
+        </h4>
+      </div>
     </div>
   );
 }

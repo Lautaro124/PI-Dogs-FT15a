@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterZA, filterAZ, orderHeightMax, orderHeightMim, orderWeightMax, orderWeightMim,
    getDogs, getTemperament, filterTemp } from "../../Actions/index";
 import { useEffect, useState } from "react";
-
+import S from'./nav.module.css'
 
 export default function Nav() {
   const dispatch = useDispatch();
@@ -39,27 +39,34 @@ export default function Nav() {
     setFilter(e.target.value)
   }
   return (
-    <div>
-      <NavLink exact to="/Home">
-        Home
-      </NavLink> 
-      <select onChange={e => HundleOnchangeOrder(e)} >
-        <option value="A-Z">A-Z</option>
-        <option value="Z-A">Z-A</option>
-        <option value="heigthMay">Heigth May</option>
-        <option value="heigthMin">Heigth Min</option>
-        <option value="weigthMay">Weigth May</option>
-        <option value="weigthMin" >Weigth Min</option>
-      </select>
-      <select onChange={e => HundleOnchangeFilter(e)}>
-        <option value="default">Temperaments</option>
-        {temps &&
-          temps.map((e) => {
-            return <option key={e.id} value={e.name}>{e.name}</option>;
-          })}
-      </select>
-      <Link to='/Create'><button>Create</button></Link>
-      <SearchBar />
-    </div>
+    <nav className="navbar navbar-dark bg-dark">
+      <div className= 'container'>
+        <NavLink exact to="/Home" className="navbar-brand">
+          Home
+        </NavLink>
+        <Link to='/Create'><button className='navbar-toggler'>Create</button></Link>
+        <div>
+          <select className="nav-link dropdown-toggle" onChange={e => HundleOnchangeOrder(e)} >       
+            <option className="dropdown-item" value="A-Z">A-Z</option>
+            <option className="dropdown-item" value="Z-A">Z-A</option>
+            <option className="dropdown-item" value="heigthMay">Heigth May</option>
+            <option className="dropdown-item" value="heigthMin">Heigth Min</option>
+            <option className="dropdown-item" value="weigthMay">Weigth May</option>
+            <option className="dropdown-item" value="weigthMin" >Weigth Min</option>       
+          </select>
+        </div>
+        <div className="">
+          <select className='nav-link dropdown-toggle' onChange={e => HundleOnchangeFilter(e)}>
+            <option value="default">All dogs</option>
+            {temps &&
+              temps.map((e) => {
+                return <option className="dropdown-item" key={e.id} value={e.name}>{e.name}</option>;
+              })}
+          </select>
+        </div>     
+        <SearchBar />
+      </div>
+    </nav>
+    
   );
 }

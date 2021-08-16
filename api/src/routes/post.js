@@ -3,27 +3,23 @@ const { Dog, Temperament } = require('../db')
 const router = Router();
 
 router.post('/', async(req, res)=> {
-    try{
-        const { name, height, weight, life_span, temperament}= req.body
+    const { name, height, weight, life_span, temperaments } = req.body;
+    try {
+        const raza = await Dog.create({
+            name,
+            height,
+            weight,
+            life_span,
+        });
 
-        let save = await Dog.findOrCreate({where: { name }, defaults: { name, height, weight, life_span }})
+        const temps = await Temperament.findAll({where: {name: temperaments}})
 
-        let finall = await Temperament.findAll()
-        save.setTemperaments(temperament.map(e => { 
-            
-            let algo = finall.map(a=> {
-                if(a.name === e){
-                   return a.id
-                }
-            })
-            return algo
-        }))
+        const al = await raza.addTemperaments(temps);
 
-        return res.status(200).send({ name, height,  weight, life_span, temperament})
-    }
-    catch(err) {
+        res.send(al);
 
-        return res.status(401).send(err)
+    } catch (error) {
+        console.log(error);
     }
 })
 module.exports= router;

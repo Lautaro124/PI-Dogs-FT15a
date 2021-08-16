@@ -36,12 +36,16 @@ export function getTemperament(){
     }
 }
 
-export function sendDogs(){ 
-    return async function(dispatch) {
-
-        let algo=  await axios.get(URL_DOG)
-        return dispatch({type:SEND_DOGS, payload: algo.data})
+export function sendDogs(dog){ 
+    return async function() {
+        try{
+            let algo=  await axios.post(URL_DOG, dog)
+        }
+        catch(err){
+            console.error(err)
+        }
     }
+   
 }
 
 export function filterZA(){

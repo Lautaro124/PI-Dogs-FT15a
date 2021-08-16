@@ -10,7 +10,7 @@ export default function Card(props) {
     <Link to={`/Details/${props.id}`} className={S.card}>
       <div>
         <div className="card-body">
-          <img src={props.image} alt='No renderiza' className="card-img-top" />  
+          <img src={props.image} className="card-img-top" />  
         </div>
 
         <h4 className="card-title">{props.name}</h4>

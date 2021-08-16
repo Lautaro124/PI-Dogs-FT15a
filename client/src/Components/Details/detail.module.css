@@ -1,0 +1,22 @@
+.flexs{
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+}
+.content{
+    width: 80vh;
+    height: 90vh;
+    border: 2px solid rgb(209, 207, 207);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.img{
+    width: 60vh;
+    height: 50vh;
+    border-radius: 10px;
+}

@@ -1,47 +1,112 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getTemperament } from '../../Actions/index'
-export default function Send(){
+import React from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTemperament, sendDogs } from "../../Actions/index";
+import { Link } from "react-router-dom";
+
+export default function Send() {
+
+  const [temps, setTemps] = useState("");
+  const [objCreate, setObjCreate] = useState({
+    name: "",
+    height: "",
+    weight: "",
+    life_span: "",
+    temperaments: [],
+  })
+
+  const dispatch = useDispatch();
+  const temp = useSelector((state) => state.temperaments);
+
+  function HandleChange(e) {
+    let temporal = {...objCreate}
+
+    temporal[e.target.name]= e.target.value
+    setObjCreate(temporal);
+  }
+
+  function HandleTemps(e){
+    setTemps(e.target.value+ ' '+ temps)
     
-    const [temps, setTemps] = useState('')
-    const [objCreate, setObjCreate] = useState({name: '',height: '',width: '',life_span: '', temperament: []})
-    const dispatch = useDispatch()
-    const temp = useSelector((state) => state.temperaments)
+    let temporal = {...objCreate}
+    temporal["temperaments"]= [...temporal["temperaments"], e.target.value]
+    setObjCreate(temporal);
+  }
 
-    function HandleChange(name, value) {
-        console.log(name, value)
-        setObjCreate({name: value})
-    }
+  async function HandleSubmit(e) {
+    e.preventDefault();
+    dispatch(sendDogs(objCreate));
+  }
+  
+  useEffect(() => {
+    dispatch(getTemperament());
+  }, [dispatch]);
 
-    function HandleSubmit(){
-        if(objCreate.name !== '' && objCreate.height !== '' && objCreate.width !== '' && objCreate.life_span !== ''){
-            if(temps !== ''){
-                
-            }
-            return alert('Un campo no se relleno correctamente')
-        }
-        return alert('Un campo no se relleno correctamente')
-    }
-    useEffect(()=> {
-        dispatch(getTemperament())
-    },[dispatch])
-
-    return(  
+  return (
+    <div>
+      <Link to="/Home">Home</Link>
+      <form onSubmit={e => HandleSubmit(e)}>
         <div>
-            <form onSubmit={HandleSubmit()}>
-                <label>Name: <input type='text' name= 'name' onChange= {e => HandleChange(e.target.name, e.target.value)}/></label>
-                <label>Height: <input type='text' name= 'height' onChange= {e => HandleChange(e.target.name, e.target.value)}/></label>
-                <label>Weight: <input type='text' name= 'weight' onChange= {e => HandleChange(e.target.name, e.target.value)}/></label>
-                <label>Life span: <input type='text' name= 'life_span' onChange= {e => HandleChange(e.target.name, e.target.value)}/></label>
-                <label>Temperament: <h6>{temps}</h6></label>
-                <select onChange={e => setTemps(temps+' '+e.target.value)}>
-                    {temp && temp.slice().sort().map(e => {
-                        return( <option key={e.id}>{e.name}</option>)
-                    })}
-                </select>
-                <input type="submit"/>
-            </form>
+          <label>
+            Name: 
+            <input
+              type="text"
+              name="name"
+              value={objCreate.name}
+              onChange={(e) => HandleChange(e)}
+            />
+          </label>
         </div>
-    )
+        <div>
+          <label>
+            Height: 
+            <input
+              type="text"
+              name="height"
+              value={objCreate.height}
+              onChange={(e) => HandleChange(e)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Weight: 
+            <input
+              type="text"
+              name="weight"
+              value={objCreate.weight}
+              onChange={(e) => HandleChange(e)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Life span: 
+            <input
+              type="text"
+              name="life_span"
+              value={objCreate.life_span}
+              onChange={(e) => HandleChange(e)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Temperament: <h6>{temps}</h6>
+          </label>
+          <select onChange={(e) => HandleTemps(e)}>
+            {temp &&
+              temp
+                .slice()
+                .sort()
+                .map((e) => {
+                  return <option key={e.id} value={e.name}>{e.name}</option>;
+                })}
+          </select>
+        </div>
+
+        <button type="submit">Create</button>
+      </form>
+    </div>
+  );
 }
