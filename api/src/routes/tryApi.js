@@ -14,28 +14,31 @@ const list= async () => {
         let convertH = e.height.metric.split(' ')
         let resultH = parseInt(convertH[0]) + parseInt(convertH[2]) / 2
 
-        return { name: e.name,  temperament: arr , image: e.image.url, id: e.id ,weight: resultW, height: resultH}
+        return { name: e.name,  temperaments: arr , image: e.image.url, id: e.id ,weight: resultW, height: resultH}
     })
     
-    let dogListDB = await Dog.findAll()
-    let dogList = [...dogListApi, ...dogListDB]
+    let dogListDB = await Dog.findAll({
+        include: {
+            model: Temperament,
+            attributes: [ 'name' ],
+            through: { attributes: [] }
+        }
+    })
+
+
+    let dogList = [...dogListApi, ...dogListDB];
 
     return dogList
 }
 
 const namesFilter= async (parameter) =>{
 
-    let apiCall = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${parameter}`)
-    let dogListApi = await apiCall.data
-
-    let dogListDB = await Dog.findAll()   
+    let dogListDB = await list()  
     dogListDB = dogListDB.filter((objeto) =>
         objeto.name.toLowerCase().includes(parameter.toLowerCase())
     );
-
-    let dogList = [...dogListApi, ...dogListDB]
     
-    return dogList
+    return dogListDB
 }
 
 const  shearchId= async (parameter) => {
@@ -53,14 +56,14 @@ const  shearchId= async (parameter) => {
                 height: objeto.height.metric,
                 weight: objeto.weight.metric,
                 life_span: objeto.life_span,
-                temperament: save,
+                temperaments: save,
                 image: objeto.image.url
             }
         }
     });
 
-    let dogListDB = await Dog.findAll({include: Temperament})   
-    dogListDB = dogListDB.forEach((objeto) =>{
+    let dogListDB = await Dog.findAll({include: {model: Temperament}})   
+    dogListDB = dogListDB.map((objeto) =>{
         if(objeto.id.toString() === parameter){
             arr = {
                 name: objeto.name,
@@ -68,8 +71,8 @@ const  shearchId= async (parameter) => {
                 height: objeto.height,
                 weight: objeto.weight,
                 life_span: objeto.life_span,
-                temperament: Temperamen.data.map(e => {
-
+                temperaments: Temperaments.data.map(e => {
+                    return e + ' '
                 }),
             }
         }
@@ -84,8 +87,8 @@ const  temperaments= async() => {
 
     let arr = []
     lista.map(e => {
-        if(e.temperament){
-            arr = [...e.temperament, ...arr];
+        if(e.temperaments){
+            arr = [...e.temperaments, ...arr];
         }         
     })
 

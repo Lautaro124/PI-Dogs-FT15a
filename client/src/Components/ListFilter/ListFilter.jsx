@@ -24,7 +24,7 @@ export default function ListFilter() {
                   "https://cdn2.thedogapi.com/images/" +
                   e.reference_image_id + '.jpg'
                 }
-                temperament={e.temperament}
+                temperament={e.temperaments}
               />
             );
           })}

@@ -15,7 +15,6 @@ export default function Details() {
   useEffect(() => {
     dispatch(getIdDogs(id));
   }, [id]);
-
   return (
     <div className={S.flexs}>
       <Link to='/Home'>Home</Link>
@@ -26,12 +25,20 @@ export default function Details() {
         <h4>Weight: {detail.weight} M</h4>
         <h4>Life span: {detail.life_span}</h4>
         <h4>Temperaments: 
-          {detail.temperament &&
-            detail.temperament.map((e) => {
-              if (e) {
-                return " " + e  ;
-              }
-            })}
+          {
+            detail.temperaments ?
+              typeof(detail.temperaments) === 'object' ?
+              detail.temperaments.map((e) => {
+                if (e) {
+                  return " " + e  ;
+                }
+              }):
+              detail.temperaments.map((e) => {
+                if (e) {
+                  return " " + e.name  ;
+                }
+              }): 'Not fount'
+          }
         </h4>
       </div>
     </div>

@@ -34,7 +34,7 @@ export default function Cards() {
               key={e.id}
               name={e.name}
               image={e.image}
-              temperament={e.temperament}
+              temperament={e.temperaments}
               id={e.id}
             />
           );

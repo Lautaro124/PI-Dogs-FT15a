@@ -75,9 +75,20 @@ export default function reducer(state= initialState, action) {
             }
 
         case FILTER_TEMP:
+
             return {
                 ...state,
-                dogsLoaded: state.copyBread.filter(e => e.temperament?.includes(action.payload))
+                dogsLoaded: state.copyBread.filter(e => {
+                    if(e.temperaments !== undefined){
+                       if(typeof e.temperaments[0] === 'string'){
+                        
+                       return e.temperaments?.includes(action.payload)
+                    }
+                    let arr = e.temperaments?.map(e => e.name)
+                    return arr.includes(action.payload) 
+                    }
+                    
+                })
             }
 
         default: 
