@@ -15,7 +15,7 @@ export default function Cards() {
 
   let indexLast = page * breads;
   let firstIndex = indexLast - breads;
-  const currentBreads = dogis.slice(firstIndex, indexLast);
+  const currentBreads = dogis?.slice(firstIndex, indexLast);
   
   function pagenate(pageNumber) {
     setPage(pageNumber);

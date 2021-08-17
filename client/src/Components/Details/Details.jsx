@@ -15,11 +15,16 @@ export default function Details() {
   useEffect(() => {
     dispatch(getIdDogs(id));
   }, [id]);
+
   return (
     <div className={S.flexs}>
       <Link to='/Home'>Home</Link>
       <div className={S.content}>
-        <img src={detail.image} className={S.img} />
+        { detail.image ?
+          <img src={detail.image} className={S.img} />: 
+          <img src='https://pbs.twimg.com/media/EPzN-oYXkAA_H_e?format=jpg&name=small' className={S.img}/>
+        }
+        
         <h1>{detail.name}</h1>
         <h4>Height: {detail.height} M</h4>
         <h4>Weight: {detail.weight} M</h4>

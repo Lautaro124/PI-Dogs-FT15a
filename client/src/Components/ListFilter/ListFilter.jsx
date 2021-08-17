@@ -20,10 +20,7 @@ export default function ListFilter() {
                 key={e.id}
                 id = {e.id}
                 name={e.name}
-                image={
-                  "https://cdn2.thedogapi.com/images/" +
-                  e.reference_image_id + '.jpg'
-                }
+                image={e.image}
                 temperament={e.temperaments}
               />
             );

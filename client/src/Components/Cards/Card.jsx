@@ -9,7 +9,11 @@ export default function Card(props) {
     <Link to={`/Details/${props.id}`} className={S.card}>
       <div>
         <div className="card-body">
-          <img src={props.image} className="card-img-top" />
+          { props.image?
+          <img src={props.image} className="card-img-top" />:
+          <img src='https://pbs.twimg.com/media/EPzN-oYXkAA_H_e?format=jpg&name=small' className="card-img-top" />
+        }
+          
         </div>
 
         <h4 className="card-title">{props.name}</h4>

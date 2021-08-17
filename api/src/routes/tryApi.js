@@ -62,8 +62,14 @@ const  shearchId= async (parameter) => {
         }
     });
 
-    let dogListDB = await Dog.findAll({include: {model: Temperament}})   
-    dogListDB = dogListDB.map((objeto) =>{
+    let dogListDB = await Dog.findAll({
+        include: {
+            model: Temperament,
+            attributes: [ 'name' ],
+            through: { attributes: [] }
+        }
+    })   
+    dogListDB.map((objeto) =>{
         if(objeto.id.toString() === parameter){
             arr = {
                 name: objeto.name,
@@ -71,8 +77,8 @@ const  shearchId= async (parameter) => {
                 height: objeto.height,
                 weight: objeto.weight,
                 life_span: objeto.life_span,
-                temperaments: Temperaments.data.map(e => {
-                    return e + ' '
+                temperaments: objeto.temperaments.map(e => {
+                    return e.name + ' '
                 }),
             }
         }
