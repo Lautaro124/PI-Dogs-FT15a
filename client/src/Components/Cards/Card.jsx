@@ -8,16 +8,16 @@ export default function Card(props) {
   return (
     <Link to={`/Details/${props.id}`} className={S.card}>
       <div>
-        <div className="card-body">
+        <div className={S.bodyCard}>
           { props.image?
-          <img src={props.image} className="card-img-top" />:
-          <img src='https://pbs.twimg.com/media/EPzN-oYXkAA_H_e?format=jpg&name=small' className="card-img-top" />
+          <img src={props.image} className={S.image} />:
+          <img src='https://pbs.twimg.com/media/EPzN-oYXkAA_H_e?format=jpg&name=small' className={S.image} />
         }
           
         </div>
 
-        <h4 className="card-title">{props.name}</h4>
-        <p className="card-subtitle mb-2 text-muted">
+        <h4 className={S.names}>{props.name}</h4>
+        <p className={S.temp}>
           { props.temperament
             ? typeof props.temperament[0] === "object"
               ? props.temperament.map((e) => {

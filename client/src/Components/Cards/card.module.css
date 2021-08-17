@@ -7,10 +7,15 @@
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
+    font-family: Parkavenue, cursive;
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0; 
+    background-color: #fff;
+    box-shadow: 1px 1px 5px black;
 }
 .conten{
     width: 90%;
@@ -20,4 +25,56 @@
     align-content: flex-end;
     justify-content: space-evenly;
     align-items: stretch;
+    margin-top: 10px;
+}
+
+.names{
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: calc(1.275rem + .3vw);
+    color: rgb(209, 168, 32);
+    text-shadow: 1px 1px 2px black;
+}
+.temp{
+    display: block;
+    font-weight: bold;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    box-sizing: border-box;
+    margin-bottom: .5rem!important;
+    --bs-text-opacity: 1;
+    color: #6c757d!important;
+}
+.center {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    align-content: space-between;
+}
+.pag{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.image{
+    box-sizing: border-box;
+    vertical-align: middle;
+    width: 100%;
+    border-radius: calc(.25rem - 1px);
+}
+.bodyCard{
+    display: block;
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
 }

@@ -39,34 +39,31 @@ export default function Nav() {
     setFilter(e.target.value)
   }
   return (
-    <nav className="navbar navbar-dark bg-dark">
-      <div className= 'container'>
-        <NavLink exact to="/Home" className="navbar-brand">
-          Home
-        </NavLink>
-        <Link to='/Create'><button className='navbar-toggler'>Create</button></Link>
+      <div className= {S.navbar}>
+          <NavLink exact to="/Home" className={S.link}>
+            <h4>Home</h4>
+          </NavLink>        
+          <Link to='/Create'className={S.link}>Create</Link>
         <div>
-          <select className="nav-link dropdown-toggle" onChange={e => HundleOnchangeOrder(e)} >       
-            <option className="dropdown-item" value="A-Z">A-Z</option>
-            <option className="dropdown-item" value="Z-A">Z-A</option>
-            <option className="dropdown-item" value="heigthMay">Heigth May</option>
-            <option className="dropdown-item" value="heigthMin">Heigth Min</option>
-            <option className="dropdown-item" value="weigthMay">Weigth May</option>
-            <option className="dropdown-item" value="weigthMin" >Weigth Min</option>       
+          <select className={S.selecte} onChange={e => HundleOnchangeOrder(e)} >       
+            <option className={S.option}value="A-Z">A-Z</option>
+            <option className={S.option}value="Z-A">Z-A</option>
+            <option className={S.option}value="heigthMay">Heigth May</option>
+            <option className={S.option}value="heigthMin">Heigth Min</option>
+            <option className={S.option}value="weigthMay">Weigth May</option>
+            <option className={S.option}value="weigthMin" >Weigth Min</option>       
           </select>
         </div>
-        <div className="">
-          <select className='nav-link dropdown-toggle' onChange={e => HundleOnchangeFilter(e)}>
+        <div>
+          <select className={S.selecte} onChange={e => HundleOnchangeFilter(e)}>
             <option value="default">All dogs</option>
             {temps &&
               temps.map((e) => {
-                return <option className="dropdown-item" key={e.id} value={e.name}>{e.name}</option>;
+                return <option className={S.option}key={e.id} value={e.name}>{e.name}</option>;
               })}
           </select>
         </div>     
         <SearchBar />
-      </div>
-    </nav>
-    
+      </div>   
   );
 }

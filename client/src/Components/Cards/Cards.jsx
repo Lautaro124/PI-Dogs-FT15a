@@ -11,23 +11,25 @@ export default function Cards() {
   const dogis = useSelector((state) => state.dogsLoaded);
 
   const [page, setPage] = useState(1);
-  const [breads] = useState(9);
-
+  const breads = 9
+  useEffect(() => {
+      dispatch(getDogs());
+       
+    }, [dispatch]);
+    console.log(page)
   let indexLast = page * breads;
   let firstIndex = indexLast - breads;
   const currentBreads = dogis?.slice(firstIndex, indexLast);
+
   
   function pagenate(pageNumber) {
     setPage(pageNumber);
   }
 
-  useEffect(() => {
-    dispatch(getDogs());
-  }, [dispatch]);
-
   return (
-    <div className={S.conten}>
-      {currentBreads &&
+    <div className={S.center}>
+      <div className={S.conten}>
+        {currentBreads &&
         currentBreads.map((e) => {
           return (
             <Card
@@ -39,8 +41,8 @@ export default function Cards() {
             />
           );
         })}
-
-      <div>
+      </div>  
+      <div className ={S.pag}>
         <Paginate dogis={dogis} breads={breads} paginate={pagenate}/>
       </div>
     </div>

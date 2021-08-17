@@ -49,13 +49,22 @@ const  shearchId= async (parameter) => {
     let dogListApi = await apiCall.data
     dogListApi = dogListApi.forEach((objeto) =>{
         if(objeto.id.toString() === parameter){ 
-            let save = objeto.temperament && objeto.temperament.split(',').map(e => e.trim())     
+            let save = objeto.temperament && objeto.temperament.split(',').map(e => e.trim())
+            
+            let convertW = objeto.weight.metric.split(' ')
+            let resultW = parseInt(convertW[0]) + parseInt(convertW[2]) / 2
+
+            let convertH = objeto.height.metric.split(' ')
+            let resultH = parseInt(convertH[0]) + parseInt(convertH[2]) / 2  
+            
+            let convertL = objeto.life_span.split(' ')
+            let resultL = parseInt(convertL[0]) + parseInt(convertH[2]) / 2 
             arr = {
                 name: objeto.name,
                 id: objeto.id,
-                height: objeto.height.metric,
-                weight: objeto.weight.metric,
-                life_span: objeto.life_span,
+                height: resultH,
+                weight: resultW,
+                life_span: resultL,
                 temperaments: save,
                 image: objeto.image.url
             }

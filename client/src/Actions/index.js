@@ -21,10 +21,14 @@ export  function getIdDogs(id){
 }
 
 export function getNameDogs(name){
-    return async function(dispatch) {
-
-        let algo =  await axios.get(`http://localhost:3001/dogs?name=${name}`)
-        return dispatch({type: GET_NAME_DOGS, payload: algo.data})
+    return async (dispatch) => {
+        try{
+          let algo =  await axios.get(`http://localhost:3001/dogs?name=${name}`)
+            return dispatch({type: GET_NAME_DOGS, payload: algo.data})  
+        }
+        catch(err){
+            alert(err)
+        }   
     }
 }
 

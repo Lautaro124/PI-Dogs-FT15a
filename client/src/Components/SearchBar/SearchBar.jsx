@@ -3,7 +3,7 @@ import { getNameDogs } from "../../Actions/index";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
+import S from "./search.module.css"
 export default function Search() {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
@@ -16,24 +16,23 @@ export default function Search() {
   function HandleSubmit() {
 
     dispatch(getNameDogs(input));
-    setInput("");  
   }
   return (
-    <div className="d-flex">
+    <div className={S.flex}>
         <input
           type="text"
           placeholder="Search..."
           onChange={(e) => HandleChange(e)}
-          className = 'form-control me-2'
+          className = {S.search}
         />
 
         {input !== "" ? (
           <Link to="/Home/Search">
-            <button type="submit" className="btn btn-outline-success"onClick={() => HandleSubmit()}>Search</button>
+            <button type="submit" className={S.button} onClick={() => HandleSubmit()}>Search</button>
           </Link>
         ) : (
           <Link to="/Home">
-            <button type="submit" className="btn btn-outline-success"onClick={() => HandleSubmit()}>Search</button>
+            <button type="submit" className={S.button} onClick={() => HandleSubmit()}>Search</button>
           </Link>
         )}
     </div>
