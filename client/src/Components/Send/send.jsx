@@ -59,7 +59,7 @@ export default function Send() {
   return (
     <div>
       <nav className={S.navbar}>
-        <Link to="/Home" className ={S.link}><h3>Home</h3></Link>
+        <Link to="/Home" className ={S.link}><h3 className={S.color}>Home</h3></Link>
       </nav>   
       <div className={S.center}>
         <form onSubmit={e => HandleSubmit(e)} className={S.flex}>

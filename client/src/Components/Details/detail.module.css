@@ -71,6 +71,10 @@ h3{
     padding: 2px 1px 0;  
 }
 
+.color:hover{
+    color: blue;
+}
+
 .nam{
     display: block;
     font-size: 1.17em;

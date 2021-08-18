@@ -19,7 +19,7 @@ export default function Details() {
   return (
     <div className={S.flexs}>
       <nav className={S.navbar}>
-        <Link to="/Home" className={S.send}><h3>Home</h3></Link>
+        <Link to="/Home" className={S.send}><h3 className={S.color}>Home</h3></Link>
       </nav>
       <div className={S.content}>
         <div>

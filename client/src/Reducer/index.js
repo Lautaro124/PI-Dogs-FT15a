@@ -82,7 +82,7 @@ export default function reducer(state= initialState, action) {
             return {
                 ...state,
                 page: 1,
-                dogsLoaded: state.copyBread.filter(e => {
+                dogsLoaded: state.copyBread?.filter(e => {
                     if(e.temperaments !== undefined){
                        if(typeof e.temperaments[0] === 'string'){
                         
