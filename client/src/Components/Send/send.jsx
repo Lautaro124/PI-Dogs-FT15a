@@ -123,7 +123,7 @@ export default function Send() {
             </select>
           </div>
 
-          <button type="submit" className={S.margin}>Create</button>
+          <button type="submit" className={S.button}>Create</button>
         </form>
       </div>
     </div>
