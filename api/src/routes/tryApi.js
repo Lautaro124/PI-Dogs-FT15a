@@ -26,7 +26,7 @@ const list= async () => {
     })
 
 
-    let dogList = [...dogListApi, ...dogListDB];
+    let dogList = [...dogListDB,...dogListApi ];
 
     return dogList
 }

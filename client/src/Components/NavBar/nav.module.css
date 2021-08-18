@@ -94,6 +94,9 @@
     text-decoration: none;
     white-space: nowrap;
 }
+.link:hover{
+    color: blue;
+}
 
 .button{
     box-sizing: border-box;

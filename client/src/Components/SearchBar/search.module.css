@@ -46,3 +46,8 @@
     font-size: 1rem;
     border-radius: .25rem;
 }
+
+.button:hover{
+    background-color:rgb(209, 168, 32);
+    color: black;
+}

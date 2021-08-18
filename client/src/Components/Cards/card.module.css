@@ -16,6 +16,18 @@
     padding: 2px 1px 0; 
     background-color: #fff;
     box-shadow: 1px 1px 5px black;
+    transition-duration: 0.4s;
+}
+.card.is-loading{
+
+    background: linear-gradient(1100deg, #eee 8%, rgb(147, 142, 142) 18%, #eee 33%);
+    background-size: 200% 100%;
+    animation: 1,55s shine linear infinite;
+}
+@keyframes shine {
+    to{
+        background-position-x: -200%;
+    }
 }
 .conten{
     width: 90%;
@@ -78,3 +90,24 @@
     flex: 1 1 auto;
     padding: 1rem 1rem;
 }
+.card:hover{
+    box-shadow: 3px 3px 9px black;
+}
+.paginate{
+    font-family: Parkavenue, cursive;
+    background-color: white;
+    border-radius: 2px;
+    border: 3px solid rgb(209, 168, 32);
+    color: black;
+    margin: 5px;
+    font-size: 1.2rem;
+    box-shadow: 1px 1px 5px black;
+}
+
+.paginate:hover{
+    font-family: Parkavenue, cursive;
+    background-color:rgb(209, 168, 32);
+    color: black;
+    box-shadow: 2px 2px 4px black;
+}
+

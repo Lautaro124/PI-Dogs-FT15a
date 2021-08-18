@@ -23,6 +23,7 @@ export default function Nav() {
   },[dispatch, filter])
 
   useEffect(() => {
+    if(order === 'order') dispatch(getDogs())
     if(order === "Z-A") dispatch(filterZA())
     if(order === "A-Z") dispatch(filterAZ())
     if(order === "heigthMay") dispatch(orderHeightMax())
@@ -45,7 +46,8 @@ export default function Nav() {
           </NavLink>        
           <Link to='/Create'className={S.link}>Create</Link>
         <div>
-          <select className={S.selecte} onChange={e => HundleOnchangeOrder(e)} >       
+          <select className={S.selecte} onChange={e => HundleOnchangeOrder(e)} > 
+            <option className={S.option} value='order'>Order</option>      
             <option className={S.option}value="A-Z">A-Z</option>
             <option className={S.option}value="Z-A">Z-A</option>
             <option className={S.option}value="heigthMay">Heigth May</option>
@@ -56,7 +58,7 @@ export default function Nav() {
         </div>
         <div>
           <select className={S.selecte} onChange={e => HundleOnchangeFilter(e)}>
-            <option value="default">All dogs</option>
+            <option value="default">Temperaments</option>
             {temps &&
               temps.map((e) => {
                 return <option className={S.option}key={e.id} value={e.name}>{e.name}</option>;

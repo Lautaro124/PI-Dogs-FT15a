@@ -28,11 +28,11 @@ export default function Search() {
 
         {input !== "" ? (
           <Link to="/Home/Search">
-            <button type="submit" className={S.button} onClick={() => HandleSubmit()}>Search</button>
+            <button className={S.button} onClick={() => HandleSubmit()}>Search</button>
           </Link>
         ) : (
           <Link to="/Home">
-            <button type="submit" className={S.button} onClick={() => HandleSubmit()}>Search</button>
+            <button className={S.button} onClick={() => HandleSubmit()}>Search</button>
           </Link>
         )}
     </div>

@@ -11,10 +11,10 @@ export default function ListFilter() {
   const dispatch = useDispatch();
   const aut = useSelector((state) => state.dogsLoaded);
 
-  const page = useSelector((state) => state.dogsLoaded)
+  const pages = useSelector((state) => state.page)
   const [breads] = useState(9);
 
-  let indexLast = page * breads;
+  let indexLast = pages * breads;
   let firstIndex = indexLast - breads;
   const currentBreads = aut?.slice(firstIndex, indexLast);
 
@@ -32,10 +32,10 @@ export default function ListFilter() {
               return (
                 <Card
                   key={e.id}
-                  id={e.id}
                   name={e.name}
                   image={e.image}
                   temperament={e.temperaments}
+                  id={e.id}
                 />
               );
             })}

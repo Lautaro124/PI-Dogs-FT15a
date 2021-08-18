@@ -10,17 +10,18 @@ export default function Cards() {
   const dispatch = useDispatch();
   const dogis = useSelector((state) => state.dogsLoaded);
 
-  const page = useSelector((state) => state.page)
+  const pages = useSelector((state) => state.page)
   const breads = 9
 
   useEffect(() => {
-      dispatch(getDogs());    
+      dispatch(getDogs()); 
+      console.log('Pasaste por aca')
   }, [dispatch]);
 
-  let indexLast = page * breads;
+  let indexLast = pages * breads;
   let firstIndex = indexLast - breads;
   const currentBreads = dogis?.slice(firstIndex, indexLast);
-
+  
   
   function pagenate(pageNumber) {
     dispatch(getpage(pageNumber));

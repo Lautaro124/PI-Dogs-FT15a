@@ -1,5 +1,5 @@
 import React from "react";
-
+import S from "./card.module.css";
 export default function Paginate(props) {
   const pageNumber = [];
 
@@ -14,7 +14,9 @@ export default function Paginate(props) {
             key= {e}
             onClick={() => {
               props.paginate(e)
-            }}>
+            }}
+            className={S.paginate}
+            >
             {e}
           </button>
         ))}
