@@ -10,16 +10,18 @@ import S from'./nav.module.css'
 export default function Nav() {
   const dispatch = useDispatch();
   const [order, setOrder] = useState('')
-  const [filter,setFilter] = useState('default')
+  const [filter,setFilter] = useState('')
 
   const temps = useSelector((state) => state.temperaments);
   useEffect(() => {
-    if(filter === 'default'){
-      dispatch(getTemperament())
-      dispatch(getDogs())
-    }else{
+    dispatch(getTemperament())
+    if(filter !== '-'){
       dispatch(filterTemp(filter))
-    }
+      
+    }else{
+      console.log('PITULIN ENTRO A LA SALA')
+      dispatch(getDogs())
+    }   
   },[dispatch, filter])
 
   useEffect(() => {
@@ -58,7 +60,7 @@ export default function Nav() {
         </div>
         <div>
           <select className={S.selecte} onChange={e => HundleOnchangeFilter(e)}>
-            <option value="default">Temperaments</option>
+            <option value="-">Temperaments</option>
             {temps &&
               temps.map((e) => {
                 return <option className={S.option}key={e.id} value={e.name}>{e.name}</option>;

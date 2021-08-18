@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import S from "./search.module.css"
+
 export default function Search() {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");

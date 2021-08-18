@@ -23,8 +23,7 @@ export  function getIdDogs(id){
 export function getNameDogs(name){
     return async (dispatch) => {
         try{
-            console.log(name)
-          let algo =  await axios.get(`http://localhost:3001/dogs?name=${name}`)
+            let algo =  await axios.get(`http://localhost:3001/dogs?name=${name}`)
             return dispatch({type: GET_NAME_DOGS, payload: algo.data})  
         }
         catch(err){
