@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs } from "../../Actions/index";
+import { getDogs, getpage } from "../../Actions/index";
 import S from "./card.module.css";
 import Paginate from "./Paginate";
 
@@ -10,20 +10,20 @@ export default function Cards() {
   const dispatch = useDispatch();
   const dogis = useSelector((state) => state.dogsLoaded);
 
-  const [page, setPage] = useState(1);
+  const page = useSelector((state) => state.page)
   const breads = 9
+
   useEffect(() => {
-      dispatch(getDogs());
-       
-    }, [dispatch]);
-    console.log(page)
+      dispatch(getDogs());    
+  }, [dispatch]);
+
   let indexLast = page * breads;
   let firstIndex = indexLast - breads;
   const currentBreads = dogis?.slice(firstIndex, indexLast);
 
   
   function pagenate(pageNumber) {
-    setPage(pageNumber);
+    dispatch(getpage(pageNumber));
   }
 
   return (

@@ -1,15 +1,17 @@
 import React from "react";
 import Card from "../Cards/Card";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import Nav from "../NavBar/Nav";
+import { getpage } from "../../Actions/index"
 import S from "../Cards/card.module.css";
 import Paginate from "../Cards/Paginate";
 
 export default function ListFilter() {
+  const dispatch = useDispatch();
   const aut = useSelector((state) => state.dogsLoaded);
 
-  const [page, setPage] = useState(1);
+  const page = useSelector((state) => state.dogsLoaded)
   const [breads] = useState(9);
 
   let indexLast = page * breads;
@@ -17,7 +19,7 @@ export default function ListFilter() {
   const currentBreads = aut?.slice(firstIndex, indexLast);
 
   function pagenate(pageNumber) {
-    setPage(pageNumber);
+    dispatch(getpage(pageNumber));
   }
 
   return (

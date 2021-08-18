@@ -1,5 +1,5 @@
 import { GET_DOGS, GET_ID_DOGS, GET_TEMPERAMENT, GET_NAME_DOGS, 
-    SEND_DOGS, FILTER_ZA, FILTER_AZ, ORDER_HEIGHT_MAX, ORDER_HEIGHT_MIN, 
+    PAGE, FILTER_ZA, FILTER_AZ, ORDER_HEIGHT_MAX, ORDER_HEIGHT_MIN, 
     ORDER_WEIGHT_MAX, ORDER_WEIGHT_MIN, FILTER_TEMP } from './constantes'
 import { URL_DOG, URL_TEMPERAMENT } from '../Constantes'
 import axios from 'axios'
@@ -73,4 +73,8 @@ export function orderWeightMim(){
 
 export function filterTemp(payload){
     return{type: FILTER_TEMP, payload}
+}
+
+export function getpage(page){
+    return {type:PAGE, payload: page}
 }

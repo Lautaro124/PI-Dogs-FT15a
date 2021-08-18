@@ -41,7 +41,7 @@
     vertical-align: middle;
     user-select: none;
     background-color: transparent;
-    border: 1px solid transparent;
+    border: 1px solid;
     padding: .375rem .75rem;
     font-size: 1rem;
     border-radius: .25rem;
