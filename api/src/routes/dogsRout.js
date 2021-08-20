@@ -1,9 +1,8 @@
 const { Router } = require('express');
-const { Dog, Temperament } = require('../db')
 const router = Router();
 const { list, namesFilter, shearchId }  = require('./tryApi')
 
-router.get('/', async(req, res) => {
+router.get('/', async(req, res, next) => {
     try{
         const {name} = req.query  
     
@@ -20,8 +19,9 @@ router.get('/', async(req, res) => {
         
         return res.status(200).send(lista)
     }
-    catch {
-        return res.status(401).send("Error")
+    catch(err) {
+
+        return next(err)
     }
 })
 

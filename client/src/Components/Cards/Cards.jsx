@@ -15,7 +15,6 @@ export default function Cards() {
 
   useEffect(() => {
       dispatch(getDogs()); 
-      console.log('Pasaste por aca')
   }, [dispatch]);
 
   let indexLast = pages * breads;

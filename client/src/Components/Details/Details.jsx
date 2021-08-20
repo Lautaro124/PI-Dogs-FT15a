@@ -52,20 +52,20 @@ export default function Details() {
           <div className={S.show}>
             <h5>Temperaments: </h5>
             <h5 className={S.margin}>
-            {detail.temperaments
+              {detail.temperaments
               ? typeof detail.temperaments === "object"
                 ? detail.temperaments.map((e) => {
                     if (e) {
-                      return " " + e;
+                      return "  " + e
                     }
                   })
                 : detail.temperaments.map((e) => {
                     if (e) {
-                      return " " + e.name;
+                      return " " + e.name
                     }
                   })
               : "Not fount"}
-          </h5>
+            </h5>
           </div>
           
         </div>
