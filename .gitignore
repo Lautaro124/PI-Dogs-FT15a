@@ -108,3 +108,6 @@ package-lock.json
 
 # Env
 .env
+
+#README.md
+README.md
