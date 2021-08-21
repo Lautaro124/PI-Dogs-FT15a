@@ -70,3 +70,29 @@ h3{
     background-color:rgb(209, 168, 32);
     color: black;
 }
+.listTemp{
+    font-family: Parkavenue, cursive;
+    border: 2px solid rgb(209, 168, 32);
+    border-radius: .25rem;
+    padding: 3px;
+    color:rgb(209, 168, 32);
+    font-size: 1.2rem !important;
+    margin: 10px;
+    text-shadow: none;
+    background: transparent;
+}
+.listTemp:hover{
+    background-color: red;
+    border: 2px solid white;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+.allTemps{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: space-around;
+}

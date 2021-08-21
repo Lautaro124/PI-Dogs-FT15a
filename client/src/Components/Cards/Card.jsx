@@ -1,5 +1,4 @@
 import React from "react";
-import Details from "../Details/Details";
 import { Link } from "react-router-dom";
 import S from "./card.module.css";
 
@@ -21,10 +20,10 @@ export default function Card(props) {
           { props.temperament
             ? typeof props.temperament[0] === "object"
               ? props.temperament.map((e) => {
-                  return e.name + ", ";
+                  return e.name + " ";
                 })
               : props.temperament.map((e) => {
-                  return e + ", ";
+                  return e + " ";
                 })
             : "Not fount"}
         </p>

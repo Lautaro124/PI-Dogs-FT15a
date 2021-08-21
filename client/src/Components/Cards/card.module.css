@@ -18,8 +18,12 @@
     box-shadow: 1px 1px 5px black;
     transition-duration: 0.4s;
 }
-.card.is-loading{
-
+.cardLoading{
+    border: 1px solid rgba(220, 220, 220, 0.381);
+    margin: 5px;
+    width:25%;
+    height:30%;
+    padding: 2px 1px 0; 
     background: linear-gradient(1100deg, #eee 8%, rgb(147, 142, 142) 18%, #eee 33%);
     background-size: 200% 100%;
     animation: 1,55s shine linear infinite;

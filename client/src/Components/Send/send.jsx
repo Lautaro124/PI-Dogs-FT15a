@@ -3,69 +3,83 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperament, sendDogs } from "../../Actions/index";
 import { Link } from "react-router-dom";
-import S from "./send.module.css"
+import S from "./send.module.css";
 export default function Send() {
-
   var reg = new RegExp(/\d+/g);
-  const [temps, setTemps] = useState("");
+  const [temps, setTemps] = useState([]);
   const [objCreate, setObjCreate] = useState({
     name: "",
     height: "",
     weight: "",
     life_span: "",
     temperaments: [],
-  })
+  });
 
   const dispatch = useDispatch();
   const temp = useSelector((state) => state.temperaments);
 
   function HandleChange(e) {
-    if(e.target.name !== 'name'){
-      if(reg.test(e.target.value)){
-        let temporal = {...objCreate}
+    if (e.target.name !== "name") {
+      if (reg.test(e.target.value)) {
+        let temporal = { ...objCreate };
 
-        temporal[e.target.name]= e.target.value
+        temporal[e.target.name] = e.target.value;
         setObjCreate(temporal);
-      }
-      else{
-      return alert('No ingreso un numero')
+      } else {
+        return alert("No ingreso un numero");
       }
     }
-    
-    let temporal = {...objCreate}
 
-    temporal[e.target.name]= e.target.value
+    let temporal = { ...objCreate };
+
+    temporal[e.target.name] = e.target.value;
     setObjCreate(temporal);
   }
 
-  function HandleTemps(e){
-    setTemps(e.target.value+ ' '+ temps)
-    
-    let temporal = {...objCreate}
-    temporal["temperaments"]= [...temporal["temperaments"], e.target.value]
-    setObjCreate(temporal);
+  function HandleTemps(e) {
+    if (!temps?.includes(e.target.value)) {
+      setTemps([...temps, e.target.value]);
+
+      let temporal = { ...objCreate };
+      temporal["temperaments"] = [...temporal["temperaments"], e.target.value];
+      setObjCreate(temporal);
+    }
   }
 
   function HandleSubmit(e) {
     e.preventDefault();
     dispatch(sendDogs(objCreate));
-    alert('You created a new dog')
+    alert("You created a new dog");
   }
-  
+
   useEffect(() => {
     dispatch(getTemperament());
   }, [dispatch]);
 
+  function deleteTemperament(e) {
+    e.preventDefault()
+
+    console.log(e)
+    let newArr = temps?.filter(x => e.target.value !== x)
+    setTemps(newArr)
+
+    let temporal = { ...objCreate };
+    temporal["temperaments"] = [...temporal["temperaments"], e.target.value];
+    setObjCreate(temporal);
+      
+  }
   return (
     <div>
       <nav className={S.navbar}>
-        <Link to="/Home" className ={S.link}><h3 className={S.color}>Home</h3></Link>
-      </nav>   
+        <Link to="/Home" className={S.link}>
+          <h3 className={S.color}>Home</h3>
+        </Link>
+      </nav>
       <div className={S.center}>
-        <form onSubmit={e => HandleSubmit(e)} className={S.flex}>
-          <div >
+        <form onSubmit={(e) => HandleSubmit(e)} className={S.flex}>
+          <div>
             <label className={S.texts}>
-              Name: 
+              Name:
               <input
                 type="text"
                 name="name"
@@ -74,9 +88,9 @@ export default function Send() {
               />
             </label>
           </div>
-          <div >
+          <div>
             <label className={S.texts}>
-              Height: 
+              Height:
               <input
                 type="text"
                 name="height"
@@ -85,9 +99,9 @@ export default function Send() {
               />
             </label>
           </div>
-          <div >
+          <div>
             <label className={S.texts}>
-              Weight: 
+              Weight:
               <input
                 type="text"
                 name="weight"
@@ -96,9 +110,9 @@ export default function Send() {
               />
             </label>
           </div>
-          <div >
+          <div>
             <label className={S.texts}>
-              Life span: 
+              Life span:
               <input
                 type="text"
                 name="life_span"
@@ -107,10 +121,15 @@ export default function Send() {
               />
             </label>
           </div>
-          <div >
+          <div>
             <label className={S.texts}>
-              Temperament: <h6>{temps}</h6>
+              Temperament: 
             </label>
+            <div className={S.allTemps}>
+              {temps?.map((e) => {
+                  return (<button key={e} className={S.listTemp} value={e} onClick={(e) =>deleteTemperament(e)}>{e} </button>)
+                })}
+            </div>
             <select onChange={(e) => HandleTemps(e)}>
               <option>-</option>
               {temp &&
@@ -118,12 +137,18 @@ export default function Send() {
                   .slice()
                   .sort()
                   .map((e) => {
-                    return <option key={e.id} value={e.name}>{e.name}</option>;
+                    return (
+                      <option key={e.id} value={e.name}>
+                        {e.name}
+                      </option>
+                    );
                   })}
             </select>
           </div>
 
-          <button type="submit" className={S.button}>Create</button>
+          <button type="submit" className={S.button}>
+            Create
+          </button>
         </form>
       </div>
     </div>

@@ -36,17 +36,17 @@ export default function Details() {
         <div className={S.bottom}>
           <div className={S.show}>
             <h5>Height: </h5>
-            <h5 className={S.margin}> {' '+detail.height}</h5>
+            <h5 className={S.margin}> {' '+detail.height} CM</h5>
           </div>
           
           <div className={S.show}>
             <h5>Weight: </h5>
-            <h5 className={S.margin}> {' '+detail.weight}</h5>
+            <h5 className={S.margin}> {' '+detail.weight} M</h5>
           </div>
           
           <div className={S.show}>
             <h5>Life span: </h5>
-            <h5 className={S.margin}> {' '+detail.life_span}</h5>
+            <h5 className={S.margin}> {' '+detail.life_span} Years</h5>
           </div>
           
           <div className={S.show}>

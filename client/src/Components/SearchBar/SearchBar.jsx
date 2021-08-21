@@ -10,12 +10,10 @@ export default function Search() {
   const [input, setInput] = useState("");
 
   function HandleChange(e) {
-
     setInput(e.target.value);
   }
 
   function HandleSubmit() {
-
     dispatch(getNameDogs(input));
   }
   return (
