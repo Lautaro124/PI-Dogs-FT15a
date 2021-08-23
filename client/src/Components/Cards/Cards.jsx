@@ -43,7 +43,7 @@ export default function Cards() {
         })}
       </div>  
       <div className ={S.pag}>
-        <Paginate dogis={dogis} breads={breads} paginate={pagenate}/>
+        <Paginate page={pages} dogis={dogis} breads={breads} paginate={pagenate}/>
       </div>
     </div>
   );

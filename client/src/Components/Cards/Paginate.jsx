@@ -10,17 +10,26 @@ export default function Paginate(props) {
     <div>
       {
         pageNumber?.length > 2 && 
-          pageNumber?.map((e) => (
-            <button
+          pageNumber?.map((e) =>{ 
+            if(props.page === e){
+             return (<button
               key= {e}
               onClick={() => {
                 props.paginate(e)
               }}
-              className={S.paginate}
-              >
+              className={S.visited}>
               {e}
-            </button>
-          ))
+            </button>) 
+            }
+            return (<button
+              key= {e}
+              onClick={() => {
+                props.paginate(e)
+              }}
+              className={S.paginate}>
+              {e}
+            </button>)
+          })
         }
     </div>
   );

@@ -52,10 +52,10 @@ export default function Nav() {
             <option className={S.option} value='order'>Order</option>      
             <option className={S.option}value="A-Z">A-Z</option>
             <option className={S.option}value="Z-A">Z-A</option>
-            <option className={S.option}value="heigthMay">Heigth May</option>
-            <option className={S.option}value="heigthMin">Heigth Min</option>
-            <option className={S.option}value="weigthMay">Weigth May</option>
-            <option className={S.option}value="weigthMin" >Weigth Min</option>       
+            <option className={S.option}value="heigthMay">Heigth higher</option>
+            <option className={S.option}value="heigthMin">Heigth less</option>
+            <option className={S.option}value="weigthMay">Weigth higher</option>
+            <option className={S.option}value="weigthMin" >Weigth less</option>       
           </select>
         </div>
         <div>

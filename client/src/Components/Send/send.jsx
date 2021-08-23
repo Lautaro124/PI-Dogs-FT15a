@@ -5,7 +5,7 @@ import { getTemperament, sendDogs } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import S from "./send.module.css";
 export default function Send() {
-  var reg = new RegExp(/\d+/g);
+  var reg = new RegExp(/[0-9]/g);
   const [temps, setTemps] = useState([]);
   const [objCreate, setObjCreate] = useState({
     name: "",
@@ -59,7 +59,6 @@ export default function Send() {
   function deleteTemperament(e) {
     e.preventDefault()
 
-    console.log(e)
     let newArr = temps?.filter(x => e.target.value !== x)
     setTemps(newArr)
 
